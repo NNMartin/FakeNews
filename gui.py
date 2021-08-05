@@ -57,8 +57,8 @@ class NewsGUI:
         """
         def is_fake(url: str):
             """
-            Updates the GUI with the probability of the article found at <url> being
-            fake news.
+            Updates the GUI with the probability of the article found at <url>
+            being fake news.
 
             :param url: Url link to a news article.
             :return: None
@@ -86,7 +86,9 @@ class NewsGUI:
         canvas.pack()
 
         frame = tk.Frame(root, bg=self.BG, bd=5)
-        frame.place(relx=0.5, rely=0.1, relwidth=0.75, relheight=0.1, anchor='n')
+        frame.place(
+            relx=0.5, rely=0.1, relwidth=0.75, relheight=0.1, anchor='n'
+            )
 
         entry = tk.Entry(frame, font=30)
         entry.place(relwidth=0.65, relheight=1)
@@ -100,7 +102,9 @@ class NewsGUI:
         button.place(relx=0.7, relheight=1, relwidth=0.3)
 
         frame_lower = tk.Frame(root, bg=self.BG, bd=5)
-        frame_lower.place(relx=0.5, rely=0.25, relwidth=0.75, relheight=0.1, anchor='n')
+        frame_lower.place(
+            relx=0.5, rely=0.25, relwidth=0.75, relheight=0.1, anchor='n'
+            )
 
         label = tk.Label(frame_lower)
         label.place(relwidth=1, relheight=1)
@@ -158,7 +162,9 @@ class NewsGUI:
             article.nlp()
             text = article.text.replace('\n', ' ')
             sentences = nltk.sent_tokenize(text)
-            tri_sentences = [" ".join(sentences[i:i + 3]) for i in range(len(sentences))]
+            tri_sentences = [
+                " ".join(sentences[i:i + 3]) for i in range(len(sentences))
+                ]
             return tri_sentences
         except:
             print("Url does not link to a valid article.")
