@@ -46,8 +46,13 @@ class NewsGUI:
     WIDTH = 400
     BG = 'green'
 
-    def __int__(self):
-        self.model = self._init_model()
+    def __int__(self, model_path='model.pt'):
+        """
+
+        :param model_path: relative path to saved PyTorch model.
+        :type model_path: str
+        """
+        self.model = self._init_model(model_path)
 
     def gui(self):
         """
@@ -112,14 +117,15 @@ class NewsGUI:
         root.mainloop()
 
     @classmethod
-    def _init_model(cls) -> nn.Module:
+    def _init_model(cls, model_path: str) -> nn.Module:
         """
         Initializes neural network
 
+        :param model_path: relative path to saved PyTorch model.
         :return: nn.Module
         """
         model = SentimentClassifier(cls.ARGS)
-        model.load_state_dict(torch.load('model.pt'))
+        model.load_state_dict(torch.load(model_path))
         return model.eval()
 
     @classmethod
